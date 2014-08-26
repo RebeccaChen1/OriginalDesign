@@ -1,150 +1,65 @@
-boolean gameOver = false;
-Ball rebecca=new Ball();
-Paddle Rebecca = new Paddle();
-int score = 0 ;
-
 void setup()
 {
-  size(250, 300);
-  frameRate(150);
-  background(0);
+size(500,500);
+smooth();
+strokeWeight(3);
 }
-
 void draw()
 {
-  if (key=='r')
-  {
-    gameOver=false;
-  }
-  if (gameOver == true)
-  {
-    text("Game Over", 125, 150);
-    score=0;
-  }
-  if (gameOver == false)
-  { 
-
-    rebecca.check();
-    background(0);
-    rebecca.bounce();
-    rebecca.move();
-    rebecca.show();
-    Rebecca.move();
-    Rebecca.show();
-    text(score,200,50);
-  }
+  body();
+  eyes();
+  beak();
+  feet();
+  wings();
 }
-
-class Paddle
+void body()
 {
-  int x = 100;
-  Paddle()
-  {
-  }
- 
-  void move()
-  {
-    if (keyPressed==true) 
-    {
-      if (key==CODED)
-      {
-        if ( keyCode == RIGHT)
-        {
-          x++;
-        }
-        if (keyCode == LEFT)
-        {
-          x--;
-        }
-        if (x>210)
-        {
-          x=210;
-        }
-        if (x<0)
-        {
-          x=0;
-        }
-      }
-    }
-  }
-
-
-  void show()
-  {
-    fill(255, 255, 255);
-    rect(x, 292, 40, 8);
-  }
+fill(100,149,237);
+ellipse(200,200,140,200);
+fill(255,255,255);
+ellipse(200,240,80,85);
 }
-
-class Ball
+void eyes()
 {
-  int x1 = 100;
-  int y1 = 100;
-  boolean right;
-  boolean up;
-  Ball()
-  {
-  }
-  void move()
-  {
-
-    if (right==true)
-    {
-      x1++;
-    }
-    if (right==false)
-    {
-      x1--;
-    }
-    if (up==true)
-    {
-      y1--;
-    }
-    if (up==false)
-    {
-      y1++;
-    }
-  }
-
-  void bounce()
-  {
-    if (x1>242)
-    {
-      right=false;
-    }
-    if (x1<8)
-    {
-      right=true;
-    }
-    if (y1>292)
-    {
-      up=true;
-    }
-    if (y1<8)
-    {
-      up=false;
-    }
-  }
-
-  void check()
-  { 
-    if (get(x1, y1+9) == color(255))
-    {
-      up=true;
-      score ++;
-            
-    }
-
-    if (y1>290)
-    {
-      gameOver = true;
-    }
-  }
-
-  void show()
-  {
-    fill(255, 0, 0);
-    ellipse(x1, y1, 16, 16);
-  }
+fill(0,0,0);
+ellipse(220,135,30,30);
+ellipse(180,135,30,30);
+fill(238,229,222);
+ellipse(185,130,15,15);
+ellipse(225,130,15,15);
 }
-
+void beak()
+{
+fill(255,215,0);
+bezier(150,190,175,150,210,150,220,165);
+bezier(150,190,165,180,195,179,220,165);
+bezier(168,185,165,195,210,195,220,167);
+}
+void feet()
+{
+fill(255,215,0);
+beginShape();
+curveVertex(185,300);
+curveVertex(185,300);
+curveVertex(175,310);
+curveVertex(172,295);
+curveVertex(162,305);
+curveVertex(160,285);
+curveVertex(160,285);
+endShape();
+beginShape();
+curveVertex(215,300);
+curveVertex(215,300);
+curveVertex(225,310);
+curveVertex(228,295);
+curveVertex(238,305);
+curveVertex(240,285);
+curveVertex(240,285);
+endShape();
+}
+void wings()
+{
+fill(100,149,237);
+bezier(267,173,290,200,310,300,260,250);
+bezier(133,173,110,200,90,300,140,250);
+}
